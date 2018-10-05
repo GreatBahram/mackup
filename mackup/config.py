@@ -2,6 +2,7 @@
 
 import os
 import os.path
+import sys
 
 from .constants import (MACKUP_BACKUP_PATH,
                         MACKUP_CONFIG_FILE,
@@ -18,9 +19,9 @@ from .utils import (error,
                     get_google_drive_folder_location,
                     get_icloud_folder_location,
                     get_box_folder_location)
-try:
+if sys.version_info[0] >= 3:
     from configparser import ConfigParser
-except ImportError:
+else:
     from ConfigParser import SafeConfigParser as ConfigParser
 
 
