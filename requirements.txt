@@ -4,5 +4,7 @@ flake8
 docopt
 six
 coverage
+typing
+mypy_extensions
 pytest
 pytest-cov

@@ -8,8 +8,11 @@ import subprocess
 import sys
 import sqlite3
 from six.moves import input
+from typing import Text  # noqa
 
 from . import constants
+
+from mypy_extensions import NoReturn  # noqa
 
 
 # Flag that controls how user confirmation works.
@@ -184,6 +187,7 @@ def chmod(target):
 
 
 def error(message):
+    # type: (str) -> NoReturn
     """
     Throw an error with the given message and immediately quit.
 
@@ -196,7 +200,7 @@ def error(message):
 
 
 def get_dropbox_folder_location():
-    # type: () -> str
+    # type: () -> Text
     """
     Try to locate the Dropbox folder.
 
