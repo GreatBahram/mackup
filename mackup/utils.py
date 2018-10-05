@@ -18,6 +18,7 @@ FORCE_YES = False
 
 
 def confirm(question):
+    # type: (str) -> bool
     """
     Ask the user if he really want something to happen.
 
@@ -44,6 +45,7 @@ def confirm(question):
 
 
 def delete(filepath):
+    # type: (str) -> None
     """
     Delete the given file, directory or link.
 
@@ -66,6 +68,7 @@ def delete(filepath):
 
 
 def copy(src, dst):
+    # type: (str, str) -> None
     """
     Copy a file or a folder (recursively) from src to dst.
 
@@ -110,6 +113,7 @@ def copy(src, dst):
 
 
 def link(target, link_to):
+    # type: (str, str) -> None
     """
     Create a link to a target file or a folder.
 
@@ -143,6 +147,7 @@ def link(target, link_to):
 
 
 def chmod(target):
+    # type: (str) -> None
     """
     Recursively set the chmod for files to 0600 and 0700 for folders.
 
@@ -191,6 +196,7 @@ def error(message):
 
 
 def get_dropbox_folder_location():
+    # type: () -> str
     """
     Try to locate the Dropbox folder.
 
@@ -209,6 +215,7 @@ def get_dropbox_folder_location():
 
 
 def get_google_drive_folder_location():
+    # type: () -> str
     """
     Try to locate the Google Drive folder.
 
@@ -245,6 +252,7 @@ def get_google_drive_folder_location():
 
 
 def get_box_folder_location():
+    # type: () -> str
     """
     Try to locate the Box folder.
 
@@ -267,6 +275,7 @@ def get_box_folder_location():
 
 
 def get_copy_folder_location():
+    # type: () -> str
     """
     Try to locate the Copy folder.
 
@@ -297,6 +306,7 @@ def get_copy_folder_location():
 
 
 def get_icloud_folder_location():
+    # type: () -> str
     """
     Try to locate the iCloud Drive folder.
 
@@ -314,6 +324,7 @@ def get_icloud_folder_location():
 
 
 def is_process_running(process_name):
+    # type: (str) -> bool
     """
     Check if a process with the given name is running.
 
@@ -336,6 +347,7 @@ def is_process_running(process_name):
 
 
 def remove_acl(path):
+    # type: (str) -> None
     """
     Remove the ACL of the file or folder located on the given path.
 
@@ -356,6 +368,7 @@ def remove_acl(path):
 
 
 def remove_immutable_attribute(path):
+    # type: (str) -> None
     """
     Remove the immutable attribute of the given path.
 
@@ -377,6 +390,7 @@ def remove_immutable_attribute(path):
 
 
 def can_file_be_synced_on_current_platform(path):
+    # type: (str) -> bool
     """
     Check if the given path can be synced locally.
 

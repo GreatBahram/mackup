@@ -49,10 +49,12 @@ class ColorFormatCodes:
 
 
 def header(str):
+    # type: (str) -> str
     return ColorFormatCodes.BLUE + str + ColorFormatCodes.NORMAL
 
 
 def bold(str):
+    # type: (str) -> str
     return ColorFormatCodes.BOLD + str + ColorFormatCodes.NORMAL
 
 

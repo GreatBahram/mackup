@@ -62,6 +62,7 @@ class Config(object):
 
     @property
     def engine(self):
+        # type: () -> str
         """
         The engine used by the storage.
 
@@ -75,6 +76,7 @@ class Config(object):
 
     @property
     def path(self):
+        # type: () -> str
         """
         Path to the Mackup configuration files.
 
@@ -88,6 +90,7 @@ class Config(object):
 
     @property
     def directory(self):
+        # type: () -> str
         """
         The name of the Mackup directory, named Mackup by default.
 
@@ -98,6 +101,7 @@ class Config(object):
 
     @property
     def fullpath(self):
+        # type: () -> str
         """
         Full path to the Mackup configuration files.
 
@@ -151,6 +155,7 @@ class Config(object):
         return parser
 
     def _warn_on_old_config(self):
+        # type: () -> None
         """Warn the user if an old config format is detected."""
         # Is an old setion is in the config file ?
         old_sections = ['Allowed Applications', 'Ignored Applications']
@@ -170,6 +175,7 @@ class Config(object):
                       .format(MACKUP_CONFIG_FILE))
 
     def _parse_engine(self):
+        # type: () -> str
         """
         Parse the storage engine in the config.
 
@@ -194,6 +200,7 @@ class Config(object):
         return str(engine)
 
     def _parse_path(self):
+        # type: () -> str
         """
         Parse the storage path in the config.
 
@@ -221,6 +228,7 @@ class Config(object):
         return str(path)
 
     def _parse_directory(self):
+        # type: () -> str
         """
         Parse the storage directory in the config.
 
