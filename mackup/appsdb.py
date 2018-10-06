@@ -5,21 +5,14 @@ The Applications Database provides an easy to use interface to load application
 data from the Mackup Database (files).
 """
 import os
-import sys
-
+from configparser import ConfigParser
 
 from .constants import APPS_DIR
 from .constants import CUSTOM_APPS_DIR
 from typing import cast
-from typing import Dict  # noqa
-from typing import Set  # noqa
-from mypy_extensions import TypedDict  # noqa
-
-
-if sys.version_info[0] >= 3:
-    from configparser import ConfigParser
-else:
-    from ConfigParser import SafeConfigParser as ConfigParser
+from typing import Dict
+from typing import Set
+from mypy_extensions import TypedDict
 
 
 AppEntry = TypedDict('AppEntry',
@@ -30,11 +23,10 @@ class ApplicationsDatabase(object):
 
     """Database containing all the configured applications."""
 
-    def __init__(self):
-        # type: () -> None
+    def __init__(self) -> None:
         """Create a ApplicationsDatabase instance."""
         # Build the dict that will contain the properties of each application
-        self.apps = dict()  # type: Dict[str, AppEntry]
+        self.apps: Dict[str, AppEntry] = dict()
 
         for config_file in ApplicationsDatabase.get_config_files():
             config = ConfigParser(allow_no_value=True)
@@ -89,8 +81,7 @@ class ApplicationsDatabase(object):
                                 .add(path))
 
     @staticmethod
-    def get_config_files():
-        # type: () -> Set[str]
+    def get_config_files() -> Set[str]:
         """
         Return the application configuration files.
 
@@ -133,8 +124,7 @@ class ApplicationsDatabase(object):
 
         return config_files
 
-    def get_name(self, name):
-        # type: (str) -> str
+    def get_name(self, name: str) -> str:
         """
         Return the fancy name of an application.
 
@@ -146,8 +136,7 @@ class ApplicationsDatabase(object):
         """
         return self.apps[name]['name']
 
-    def get_files(self, name):
-        # type: (str) -> Set[str]
+    def get_files(self, name: str) -> Set[str]:
         """
         Return the list of config files of an application.
 
@@ -159,8 +148,7 @@ class ApplicationsDatabase(object):
         """
         return self.apps[name]['configuration_files']
 
-    def get_app_names(self):
-        # type: () -> Set[str]
+    def get_app_names(self) -> Set[str]:
         """
         Return application names.
 
@@ -176,8 +164,7 @@ class ApplicationsDatabase(object):
 
         return app_names
 
-    def get_pretty_app_names(self):
-        # type: () -> Set[str]
+    def get_pretty_app_names(self) -> Set[str]:
         """
         Return the list of pretty app names that are available in the database.
 

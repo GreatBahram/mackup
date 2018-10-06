@@ -34,7 +34,7 @@ backend with a .mackup.cfg file.
 See https://github.com/lra/mackup/tree/master/doc for more information.
 
 """
-from typing import Dict  # noqa
+from typing import Dict
 
 from docopt import docopt
 from .appsdb import ApplicationsDatabase
@@ -50,30 +50,27 @@ class ColorFormatCodes:
     NORMAL = '\033[0m'
 
 
-def header(str):
-    # type: (str) -> str
+def header(str: str) -> str:
     return ColorFormatCodes.BLUE + str + ColorFormatCodes.NORMAL
 
 
-def bold(str):
-    # type: (str) -> str
+def bold(str: str) -> str:
     return ColorFormatCodes.BOLD + str + ColorFormatCodes.NORMAL
 
 
-def main():
-    # type: () -> None
+def main() -> None:
     """Main function."""
     # Get the command line arg
-    args = docopt(
+
+    args: Dict[str, bool] = docopt(
         __doc__,
-        version="Mackup {}".format(VERSION)
-    )  # type: Dict[str, bool]
+        version="Mackup {}".format(VERSION),
+    )
 
     mckp = Mackup()
     app_db = ApplicationsDatabase()
 
-    def printAppHeader(app_name):
-        # type: (str) -> None
+    def printAppHeader(app_name: str) -> None:
         if verbose:
             print(("\n{0} {1} {0}").format(header("---"), bold(app_name)))
 

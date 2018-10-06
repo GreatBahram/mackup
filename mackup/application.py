@@ -8,16 +8,21 @@ import os
 
 from .mackup import Mackup
 from . import utils
-from typing import Set  # noqa
-from typing import Tuple  # noqa
+from typing import Set
+from typing import Tuple
 
 
 class ApplicationProfile(object):
 
     """Instantiate this class with application specific data."""
 
-    def __init__(self, mackup, files, dry_run, verbose):
-        # type: (Mackup, Set[str], bool, bool) -> None
+    def __init__(
+            self,
+            mackup: Mackup,
+            files: Set[str],
+            dry_run: bool,
+            verbose: bool,
+    ) -> None:
         """
         Create an ApplicationProfile instance.
 
@@ -33,8 +38,7 @@ class ApplicationProfile(object):
         self.dry_run = dry_run
         self.verbose = verbose
 
-    def getFilepaths(self, filename):
-        # type: (str) -> Tuple[str, str]
+    def getFilepaths(self, filename: str) -> Tuple[str, str]:
         """
         Get home and mackup filepaths for given file
 
@@ -47,8 +51,7 @@ class ApplicationProfile(object):
         return (os.path.join(os.environ['HOME'], filename),
                 os.path.join(self.mackup.mackup_folder, filename))
 
-    def backup(self):
-        # type: () -> None
+    def backup(self) -> None:
         """
         Backup the application config files.
 
@@ -134,8 +137,7 @@ class ApplicationProfile(object):
                     print("Doing nothing\n  {}\n  does not exist"
                           .format(home_filepath))
 
-    def restore(self):
-        # type: () -> None
+    def restore(self) -> None:
         """
         Restore the application config files.
 
@@ -207,8 +209,7 @@ class ApplicationProfile(object):
                     print("Doing nothing\n  {}\n  does not exist"
                           .format(mackup_filepath))
 
-    def uninstall(self):
-        # type: () -> None
+    def uninstall(self) -> None:
         """
         Uninstall Mackup.
 

@@ -13,23 +13,21 @@ import tempfile
 from . import utils
 from . import config
 from . import appsdb
-from typing import Set  # noqa
+from typing import Set
 
 
 class Mackup(object):
 
     """Main Mackup class."""
 
-    def __init__(self):
-        # type: () -> None
+    def __init__(self) -> None:
         """Mackup Constructor."""
         self._config = config.Config()
 
         self.mackup_folder = self._config.fullpath
         self.temp_folder = tempfile.mkdtemp(prefix="mackup_tmp_")
 
-    def check_for_usable_environment(self):
-        # type: () -> None
+    def check_for_usable_environment(self) -> None:
         """Check if the current env is usable and has everything's required."""
         # Do not let the user run Mackup as root
         if os.geteuid() == 0:
@@ -48,14 +46,12 @@ class Mackup(object):
         #          " its configuration files. Please close Sublime Text and"
         #          " run me again.")
 
-    def check_for_usable_backup_env(self):
-        # type: () -> None
+    def check_for_usable_backup_env(self) -> None:
         """Check if the current env can be used to back up files."""
         self.check_for_usable_environment()
         self.create_mackup_home()
 
-    def check_for_usable_restore_env(self):
-        # type: () -> None
+    def check_for_usable_restore_env(self) -> None:
         """Check if the current env can be used to restore files."""
         self.check_for_usable_environment()
 
@@ -65,13 +61,11 @@ class Mackup(object):
                         " storage directory synced first."
                         .format(self.mackup_folder))
 
-    def clean_temp_folder(self):
-        # type: () -> None
+    def clean_temp_folder(self) -> None:
         """Delete the temp folder and files created while running."""
         shutil.rmtree(self.temp_folder)
 
-    def create_mackup_home(self):
-        # type: () -> None
+    def create_mackup_home(self) -> None:
         """If the Mackup home folder does not exist, create it."""
         if not os.path.isdir(self.mackup_folder):
             if utils.confirm("Mackup needs a directory to store your"
@@ -82,8 +76,7 @@ class Mackup(object):
             else:
                 utils.error("Mackup can't do anything without a home =(")
 
-    def get_apps_to_backup(self):
-        # type: () -> Set[str]
+    def get_apps_to_backup(self) -> Set[str]:
         """
         Get the list of applications that should be backed up by Mackup.
 
