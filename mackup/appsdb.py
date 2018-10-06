@@ -134,6 +134,7 @@ class ApplicationsDatabase(object):
         return config_files
 
     def get_name(self, name):
+        # type: (str) -> str
         """
         Return the fancy name of an application.
 
@@ -176,6 +177,7 @@ class ApplicationsDatabase(object):
         return app_names
 
     def get_pretty_app_names(self):
+        # type: () -> Set[str]
         """
         Return the list of pretty app names that are available in the database.
 

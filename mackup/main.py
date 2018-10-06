@@ -34,6 +34,8 @@ backend with a .mackup.cfg file.
 See https://github.com/lra/mackup/tree/master/doc for more information.
 
 """
+from typing import Dict  # noqa
+
 from docopt import docopt
 from .appsdb import ApplicationsDatabase
 from .application import ApplicationProfile
@@ -62,7 +64,10 @@ def main():
     # type: () -> None
     """Main function."""
     # Get the command line arg
-    args = docopt(__doc__, version="Mackup {}".format(VERSION))
+    args = docopt(
+        __doc__,
+        version="Mackup {}".format(VERSION)
+    )  # type: Dict[str, bool]
 
     mckp = Mackup()
     app_db = ApplicationsDatabase()
