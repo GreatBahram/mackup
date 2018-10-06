@@ -19,6 +19,9 @@ from .utils import (error,
                     get_google_drive_folder_location,
                     get_icloud_folder_location,
                     get_box_folder_location)
+from typing import Set
+from typing import Optional
+from configparser import ConfigParser
 if sys.version_info[0] >= 3:
     from configparser import ConfigParser
 else:
@@ -30,6 +33,7 @@ class Config(object):
     """The Mackup Config class."""
 
     def __init__(self, filename=None):
+        # type: (Optional[str]) -> None
         """
         Create a Config instance.
 
@@ -115,6 +119,7 @@ class Config(object):
 
     @property
     def apps_to_ignore(self):
+        # type: () -> Set[str]
         """
         Get the list of applications ignored in the config file.
 
@@ -125,6 +130,7 @@ class Config(object):
 
     @property
     def apps_to_sync(self):
+        # type: () -> Set[str]
         """
         Get the list of applications allowed in the config file.
 
@@ -134,6 +140,7 @@ class Config(object):
         return set(self._apps_to_sync)
 
     def _setup_parser(self, filename=None):
+        # type: (Optional[str]) -> ConfigParser
         """
         Configure the ConfigParser instance the way we want it.
 
@@ -243,6 +250,7 @@ class Config(object):
         return str(directory)
 
     def _parse_apps_to_ignore(self):
+        # type: () -> Set[str]
         """
         Parse the applications to ignore in the config.
 
@@ -260,6 +268,7 @@ class Config(object):
         return apps_to_ignore
 
     def _parse_apps_to_sync(self):
+        # type: () -> Set[str]
         """
         Parse the applications to backup in the config.
 
