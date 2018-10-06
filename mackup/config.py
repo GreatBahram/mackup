@@ -19,9 +19,8 @@ from .utils import (error,
                     get_google_drive_folder_location,
                     get_icloud_folder_location,
                     get_box_folder_location)
-from typing import Set
-from typing import Optional
-from configparser import ConfigParser
+from typing import Set  # noqa
+from typing import Optional  # noqa
 if sys.version_info[0] >= 3:
     from configparser import ConfigParser
 else:
@@ -258,7 +257,7 @@ class Config(object):
             set
         """
         # We ignore nothing by default
-        apps_to_ignore = set()
+        apps_to_ignore = set()  # type: Set[str]
 
         # Is the "[applications_to_ignore]" in the cfg file ?
         section_title = 'applications_to_ignore'
@@ -276,7 +275,7 @@ class Config(object):
             set
         """
         # We allow nothing by default
-        apps_to_sync = set()
+        apps_to_sync = set()  # type: Set[str]
 
         # Is the "[applications_to_sync]" section in the cfg file ?
         section_title = 'applications_to_sync'
