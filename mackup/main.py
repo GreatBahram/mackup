@@ -62,6 +62,7 @@ def bold(str):
 
 
 def main():
+    # type: () -> None
     """Main function."""
     # Get the command line arg
     args = docopt(__doc__, version="Mackup {}".format(VERSION))
@@ -70,6 +71,7 @@ def main():
     app_db = ApplicationsDatabase()
 
     def printAppHeader(app_name):
+        # type: (str) -> None
         if verbose:
             print(("\n{0} {1} {0}").format(header("---"), bold(app_name)))
 
@@ -181,8 +183,3 @@ def main():
 
     # Delete the tmp folder
     mckp.clean_temp_folder()
-
-
-with collect_types.collect():
-    main()
-collect_types.dump_stats('annotations.json')

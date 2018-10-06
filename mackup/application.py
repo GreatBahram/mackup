@@ -8,6 +8,9 @@ import os
 
 from .mackup import Mackup
 from . import utils
+from mackup.mackup import Mackup
+from typing import Set
+from typing import Tuple
 
 
 class ApplicationProfile(object):
@@ -15,6 +18,7 @@ class ApplicationProfile(object):
     """Instantiate this class with application specific data."""
 
     def __init__(self, mackup, files, dry_run, verbose):
+        # type: (Mackup, Set[str], bool, bool) -> None
         """
         Create an ApplicationProfile instance.
 
@@ -31,6 +35,7 @@ class ApplicationProfile(object):
         self.verbose = verbose
 
     def getFilepaths(self, filename):
+        # type: (str) -> Tuple[str, str]
         """
         Get home and mackup filepaths for given file
 
@@ -44,6 +49,7 @@ class ApplicationProfile(object):
                 os.path.join(self.mackup.mackup_folder, filename))
 
     def backup(self):
+        # type: () -> None
         """
         Backup the application config files.
 
@@ -130,6 +136,7 @@ class ApplicationProfile(object):
                           .format(home_filepath))
 
     def restore(self):
+        # type: () -> None
         """
         Restore the application config files.
 
@@ -202,6 +209,7 @@ class ApplicationProfile(object):
                           .format(mackup_filepath))
 
     def uninstall(self):
+        # type: () -> None
         """
         Uninstall Mackup.
 

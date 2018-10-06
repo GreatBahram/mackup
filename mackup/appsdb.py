@@ -10,6 +10,8 @@ import sys
 
 from .constants import APPS_DIR
 from .constants import CUSTOM_APPS_DIR
+from typing import Dict
+from typing import Set
 
 
 if sys.version_info[0] >= 3:
@@ -23,6 +25,7 @@ class ApplicationsDatabase(object):
     """Database containing all the configured applications."""
 
     def __init__(self):
+        # type: () -> None
         """Create a ApplicationsDatabase instance."""
         # Build the dict that will contain the properties of each application
         self.apps = dict()
@@ -81,6 +84,7 @@ class ApplicationsDatabase(object):
 
     @staticmethod
     def get_config_files():
+        # type: () -> Set[str]
         """
         Return the application configuration files.
 
@@ -136,6 +140,7 @@ class ApplicationsDatabase(object):
         return self.apps[name]['name']
 
     def get_files(self, name):
+        # type: (str) -> Set[str]
         """
         Return the list of config files of an application.
 
@@ -148,6 +153,7 @@ class ApplicationsDatabase(object):
         return self.apps[name]['configuration_files']
 
     def get_app_names(self):
+        # type: () -> Set[str]
         """
         Return application names.
 
