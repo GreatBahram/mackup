@@ -6,5 +6,7 @@ six
 coverage
 typing
 mypy_extensions
+pyannotate
 pytest
+pytest-annotate
 pytest-cov
