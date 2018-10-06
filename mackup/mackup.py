@@ -13,7 +13,7 @@ import tempfile
 from . import utils
 from . import config
 from . import appsdb
-from typing import Set
+from typing import Set  # noqa
 
 
 class Mackup(object):

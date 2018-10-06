@@ -34,9 +34,6 @@ backend with a .mackup.cfg file.
 See https://github.com/lra/mackup/tree/master/doc for more information.
 
 """
-from pyannotate_runtime import collect_types  # noqa
-collect_types.init_types_collection()  # noqa
-
 from docopt import docopt
 from .appsdb import ApplicationsDatabase
 from .application import ApplicationProfile

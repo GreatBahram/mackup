@@ -10,14 +10,20 @@ import sys
 
 from .constants import APPS_DIR
 from .constants import CUSTOM_APPS_DIR
-from typing import Dict
-from typing import Set
+from typing import cast
+from typing import Dict  # noqa
+from typing import Set  # noqa
+from mypy_extensions import TypedDict  # noqa
 
 
 if sys.version_info[0] >= 3:
-    import configparser
+    from configparser import ConfigParser
 else:
-    import ConfigParser as configparser
+    from ConfigParser import SafeConfigParser as ConfigParser
+
+
+AppEntry = TypedDict('AppEntry',
+                     {'name': str, 'configuration_files': Set[str]})
 
 
 class ApplicationsDatabase(object):
@@ -28,13 +34,13 @@ class ApplicationsDatabase(object):
         # type: () -> None
         """Create a ApplicationsDatabase instance."""
         # Build the dict that will contain the properties of each application
-        self.apps = dict()
+        self.apps = dict()  # type: Dict[str, AppEntry]
 
         for config_file in ApplicationsDatabase.get_config_files():
-            config = configparser.SafeConfigParser(allow_no_value=True)
+            config = ConfigParser(allow_no_value=True)
 
             # Needed to not lowercase the configuration_files in the ini files
-            config.optionxform = str
+            config.optionxform = str  # type: ignore
 
             if config.read(config_file):
                 # Get the filename without the directory name
@@ -43,7 +49,7 @@ class ApplicationsDatabase(object):
                 app_name = filename[:-len('.cfg')]
 
                 # Start building a dict for this app
-                self.apps[app_name] = dict()
+                self.apps[app_name] = cast(AppEntry, dict())
 
                 # Add the fancy name for the app, for display purpose
                 app_pretty_name = config.get('application', 'name')

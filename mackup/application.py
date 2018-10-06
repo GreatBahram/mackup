@@ -8,9 +8,8 @@ import os
 
 from .mackup import Mackup
 from . import utils
-from mackup.mackup import Mackup
-from typing import Set
-from typing import Tuple
+from typing import Set  # noqa
+from typing import Tuple  # noqa
 
 
 class ApplicationProfile(object):
